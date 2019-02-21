@@ -86,6 +86,7 @@ public class BucketCounterImpl implements BucketCounter {
             newBucket.timestamp = curTs;
             if (latestBucket.compareAndSet(oldBucket, newBucket)) {
                 // this is a single thread operation
+                System.out.println("buckets.addLast():"+newBucket);
                 buckets.addLast(newBucket);
                 oldBucket = newBucket;
             } else {
